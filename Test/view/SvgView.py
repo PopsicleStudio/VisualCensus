@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QRectF, QFile, Qt
-from PyQt5.QtGui import QImage, QPainter, QPen, QPaintEvent, QTransform
+from PyQt5.QtCore import QRectF, QFile, Qt, pyqtSignal
+from PyQt5.QtGui import QImage, QPainter, QPen, QPaintEvent, QTransform, QMouseEvent
 from PyQt5.QtOpenGL import QGLFormat, QGLWidget, QGL
 from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraphicsRectItem, QWidget
@@ -17,6 +17,7 @@ class SvgView(QGraphicsView):
         self.image = QImage()
         self.default_width = 0
         self.default_height = 0
+        self.clicked_event = pyqtSignal(QMouseEvent)
 
         self.__tf_rotate = QTransform()
         self.__tf_scale = QTransform()
@@ -100,3 +101,6 @@ class SvgView(QGraphicsView):
 
     def __tf(self):
         self.setTransform(self.__tf_rotate * self.__tf_scale)
+
+    def mouseReleaseEvent(self, event: QMouseEvent):
+        self.clicked_event.emit(event)
