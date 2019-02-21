@@ -1,3 +1,4 @@
+from PyQt5.QtCore import QSizeF
 from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import QMainWindow
 
@@ -10,7 +11,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
 
-        self.e_view = EView()
+        self.e_view = EView(QSize(1920, 1080), QSizeF(531.5, 299.0), 5000)
 
         self.setupUi(self)
         self.init_view()
