@@ -1,0 +1,15 @@
+{
+  "name": "Test",
+  "version": "1.0.0",
+  "screen": {
+    "resolution": {
+      "width": 1080,
+      "height": 720
+    },
+    "dimension": {
+      "width": 450,
+      "height": 320
+    }
+  },
+  "distance": 5000
+}
