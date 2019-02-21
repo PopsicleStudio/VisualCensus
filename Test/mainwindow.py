@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QSizeF
+from PyQt5.QtCore import QSizeF, QSize
 from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import QMainWindow
 
@@ -24,4 +24,5 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setPalette(pal)
 
         self.layoutImg.addWidget(self.e_view)
-        self.e_view.setSizeByVision(EView.F_5_3)
+        self.e_view.setSizeCode(7)
+        self.e_view.randomDirection()

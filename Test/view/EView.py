@@ -1,6 +1,7 @@
 import math
+import random
 
-from PyQt5.QtCore import QSizeF
+from PyQt5.QtCore import QSizeF, QSize
 
 from view.SvgView import *
 
@@ -12,7 +13,8 @@ def __get_edge_by_alpha(alpha: float):
 
 
 class EView(SvgView):
-    UP, DOWN, LEFT, RIGHT = range(1, 5)
+    DRC = (-90, 90, 180, 0)
+    UP, DOWN, LEFT, RIGHT = DRC
 
     F_3_7, F_3_8, F_3_9, F_4_0, F_4_1, F_4_2, F_4_3, F_4_4, F_4_5, \
     F_4_6, F_4_7, F_4_8, F_4_9, F_5_0, F_5_1, F_5_2, F_5_3 = range(0, 17)
@@ -26,33 +28,46 @@ class EView(SvgView):
         self.dimension = dimension
         self.distance = distance
         self.direction = EView.RIGHT
+        self.size_code = EView.F_3_7
 
         self.openFile(QFile(':/svg/e'))
-        self.setSize(50, 50)
+        self._setSize()
 
     def up(self):
         self.direction = EView.UP
-        self.setAngle(-90)
+        self.setDirection()
 
     def down(self):
         self.direction = EView.DOWN
-        self.setAngle(90)
+        self.setDirection()
 
     def left(self):
         self.direction = EView.LEFT
-        self.setAngle(180)
+        self.setDirection()
 
     def right(self):
         self.direction = EView.RIGHT
-        self.setAngle(0)
+        self.setDirection()
+
+    def randomDirection(self):
+        self.direction = random.choice(EView.DRC)
+        self.setDirection()
+
+    def setDirection(self, direction=None):
+        if direction and direction in EView.DRC:
+            self.direction = direction
+
+        self._setAngle(self.direction)
 
     # 根据视力设置E的大小, 5分记录
-    def setSizeByVision(self, code: int):
-        if code < EView.F_3_7 or code > EView.F_5_3:
-            return
-        decimal = EView.DECIMAL_MAP[code]
+    def setSizeCode(self, code: int):
+        self.size_code = code
+        self._setSize()
+
+    def _setSize(self):
+        decimal = EView.DECIMAL_MAP[self.size_code]
         edge = math.pi * self.distance / (decimal * 2160)  # 视标实际边长
         # 根据屏幕物理尺寸和分辨率算出视标的分辨率
         e_resolution_w = edge * self.resolution.width() / self.dimension.width()
         e_resolution_h = edge * self.resolution.height() / self.dimension.height()
-        self.setSize(e_resolution_w, e_resolution_h)
+        super()._setSize(e_resolution_w, e_resolution_h)

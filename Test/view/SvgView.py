@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QRectF, QFile, Qt, QSize
-from PyQt5.QtGui import QImage, QPainter, QPen, QPaintEvent, QWheelEvent, QTransform
+from PyQt5.QtCore import QRectF, QFile, Qt
+from PyQt5.QtGui import QImage, QPainter, QPen, QPaintEvent, QTransform
 from PyQt5.QtOpenGL import QGLFormat, QGLWidget, QGL
 from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraphicsRectItem, QWidget
@@ -17,6 +17,9 @@ class SvgView(QGraphicsView):
         self.image = QImage()
         self.default_width = 0
         self.default_height = 0
+
+        self.__tf_rotate = QTransform()
+        self.__tf_scale = QTransform()
 
         self.setScene(QGraphicsScene(self))
 
@@ -87,31 +90,13 @@ class SvgView(QGraphicsView):
         else:
             super(SvgView, self).paintEvent(event)
 
-    def wheelEvent(self, event):
-        self.__zoomBy(pow(1.2, event.angleDelta().y() / 240.0))
+    def _setSize(self, width: float, height: float):
+        self.__tf_scale = QTransform.fromScale(width / self.default_width, height / self.default_height)
+        self.__tf()
 
-    def zoomFactor(self):
-        return self.transform().m11()
+    def _setAngle(self, angle: float):
+        self.__tf_rotate = QTransform().rotate(angle)
+        self.__tf()
 
-    def __zoomBy(self, factor):
-        currentZoom = self.zoomFactor()
-        if factor < 1 and currentZoom < 0.1 or factor > 1 and currentZoom > 50:
-            return
-        self.scale(factor, factor)
-
-    def zoomIn(self):
-        self.__zoomBy(2)
-
-    def zoomOut(self):
-        self.__zoomBy(0.5)
-
-    def resetZoom(self):
-        if not self.zoomFactor() == 1.0:
-            self.resetTransform()
-            self._zoomChanged.emit()
-
-    def setSize(self, width: float, height: float):
-        self.setTransform(QTransform.fromScale(width / self.default_width, height / self.default_height))
-
-    def setAngle(self, angle: float):
-        self.rotate(angle)
+    def __tf(self):
+        self.setTransform(self.__tf_rotate * self.__tf_scale)
