@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraph
 
 class SvgView(QGraphicsView):
     Native, OpenGL, Image = range(3)
+    clicked_event = pyqtSignal(QMouseEvent)
 
     def __init__(self, parent=None):
         super(SvgView, self).__init__(parent)
@@ -17,7 +18,6 @@ class SvgView(QGraphicsView):
         self.image = QImage()
         self.default_width = 0
         self.default_height = 0
-        self.clicked_event = pyqtSignal(QMouseEvent)
 
         self.__tf_rotate = QTransform()
         self.__tf_scale = QTransform()

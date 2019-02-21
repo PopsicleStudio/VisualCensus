@@ -26,3 +26,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.layoutImg.addWidget(self.e_view)
         self.e_view.setSizeCode(7)
         self.e_view.randomDirection()
+        self.e_view.clicked_event.connect(self.f)
+
+    def f(self, event):
+        self.e_view.randomDirection()
