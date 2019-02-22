@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QRectF, QFile, Qt, pyqtSignal
-from PyQt5.QtGui import QImage, QPainter, QPen, QPaintEvent, QTransform, QMouseEvent
+from PyQt5.QtGui import QImage, QPainter, QPen, QPaintEvent, QTransform, QMouseEvent, QWheelEvent
 from PyQt5.QtOpenGL import QGLFormat, QGLWidget, QGL
 from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraphicsRectItem, QWidget
@@ -8,6 +8,8 @@ from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraph
 class SvgView(QGraphicsView):
     Native, OpenGL, Image = range(3)
     clicked_event = pyqtSignal(QMouseEvent)
+    double_click_event = pyqtSignal(QMouseEvent)
+    wheel_event = pyqtSignal(QWheelEvent)
 
     def __init__(self, parent=None):
         super(SvgView, self).__init__(parent)
@@ -104,3 +106,9 @@ class SvgView(QGraphicsView):
 
     def mouseReleaseEvent(self, event: QMouseEvent):
         self.clicked_event.emit(event)
+
+    def mouseDoubleClickEvent(self, event: QMouseEvent):
+        self.double_click_event.emit(event)
+
+    def wheelEvent(self, event: QWheelEvent):
+        self.wheel_event.emit(event)

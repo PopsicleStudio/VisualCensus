@@ -28,7 +28,7 @@ class EView(SvgView):
         self.dimension = dimension
         self.distance = distance
         self.direction = EView.RIGHT
-        self.size_code = EView.F_3_7
+        self.size_code = EView.F_5_0
 
         self.openFile(QFile(':/svg/e'))
         self._setSize()
@@ -61,8 +61,9 @@ class EView(SvgView):
 
     # 根据视力设置E的大小, 5分记录
     def setSizeCode(self, code: int):
-        self.size_code = code
-        self._setSize()
+        if code in range(0, 17):
+            self.size_code = code
+            self._setSize()
 
     def _setSize(self):
         decimal = EView.DECIMAL_MAP[self.size_code]
