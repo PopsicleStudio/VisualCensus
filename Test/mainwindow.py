@@ -1,45 +1,29 @@
-from PyQt5.QtCore import QSizeF, QSize
-from PyQt5.QtGui import QPalette
-from PyQt5.QtWidgets import QMainWindow
+'''
+说明： 主界面 三个界面之间的切换
+时间： 2019年2月26日15:43:28
+'''
+from PyQt5.QtWidgets import (QMainWindow, QWidget)
 
-from ui_mainwindow import Ui_MainWindow
-from view.EView import EView
-from view.SvgView import *
+from loginwindow import LoginWindow
+from testwindow import TestWindow
+from endwindow import EndWindow
 
 
-class MainWindow(QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, QWidget):
     def __init__(self, parent=None):
-        super(MainWindow, self).__init__(parent)
+        super(QMainWindow, self).__init__(parent)
+        self.EnterLogin()
+        # self.startTest()
 
-        self.e_view = EView(QSize(1920, 1080), QSizeF(531.5, 299.0), 5000)
+    def EnterLogin(self):
+        self.Login =LoginWindow(self)
+        self.Login.pushButton_ok.clicked.connect(self.startTest)
 
-        self.setupUi(self)
-        self.init_view()
+    def startTest(self):
 
-    def init_view(self):
-        # self.showFullScreen()
+        self.Test = TestWindow(self)
 
-        # 背景设成白色
-        pal = QPalette(self.palette())
-        pal.setColor(QPalette.Background, Qt.white)
-        self.setAutoFillBackground(True)
-        self.setPalette(pal)
+    def endTest(self):
+        self.End = EndWindow()
+        self.show()
 
-        # 添加EView
-        self.layoutImg.addWidget(self.e_view)
-        # 设置响应事件
-        self.e_view.clicked_event.connect(self.onEViewClicked)
-        self.e_view.wheel_event.connect(self.onWheelEvent)
-
-    # 鼠标点击事件
-    def onEViewClicked(self, event: QMouseEvent):
-        self.e_view.randomDirection()
-
-    # 鼠标滚轮响应事件
-    def onWheelEvent(self, event: QWheelEvent):
-        size = self.e_view.size_code
-
-        # 鼠标动一格120度
-        size += event.angleDelta().y() // 120
-
-        self.e_view.setSizeCode(size)
