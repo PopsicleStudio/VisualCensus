@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>testing sight</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/eye.png</normaloff>images/eye.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
