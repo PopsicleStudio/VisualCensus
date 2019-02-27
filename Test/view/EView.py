@@ -28,7 +28,7 @@ class EView(SvgView):
         self.dimension = dimension
         self.distance = distance
         self.direction = EView.RIGHT
-        self.size_code = EView.F_5_0
+        self.size_code = EView.F_5_3
 
         self.openFile(QFile(':/svg/e'))
         self._setSize()

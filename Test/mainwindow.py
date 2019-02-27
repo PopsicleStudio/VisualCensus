@@ -5,6 +5,7 @@
 from PyQt5.QtWidgets import (QMainWindow, QWidget)
 
 from loginwindow import LoginWindow
+from testwindow import TestWindow
 from endwindow import EndWindow
 
 
@@ -14,9 +15,22 @@ class MainWindow(QMainWindow, QWidget):
         self.EnterLogin()
 
     def EnterLogin(self):
-        self.Login =LoginWindow(self)
+        self.Ui_Login =LoginWindow(self)
+        # 关联切换事件
+        self.Ui_Login.pushButton_ok.clicked.connect(self.startTest)
 
-    def endTest(self):
-        self.End = EndWindow()
-        self.show()
+    def startTest(self):
+        self.Ui_Login.hide()
+        self.Ui_Test = TestWindow()
+        self.Ui_Test.test_end_event.connect(self.testResult)
+
+    def testResult(self):
+        self.Ui_Test.hide()
+        self.Ui_End = EndWindow(self.Ui_Test.vision_value)
+        self.Ui_End.return_login_event.connect(self.returnLogin)
+
+    def returnLogin(self):
+        self.Ui_End.hide()
+        self.EnterLogin()
+
 

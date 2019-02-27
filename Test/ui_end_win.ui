@@ -15,16 +15,23 @@
     <pointsize>32</pointsize>
    </font>
   </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>测试结束</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/wind-smile.png</normaloff>images/wind-smile.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_end">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>270</x>
       <y>120</y>
-      <width>251</width>
+      <width>371</width>
       <height>61</height>
      </rect>
     </property>
@@ -34,13 +41,13 @@
      </font>
     </property>
     <property name="text">
-     <string>测试结束</string>
+     <string>测 试 结 束</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_tip">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>280</x>
       <y>350</y>
       <width>261</width>
       <height>71</height>
@@ -74,7 +81,7 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>270</x>
       <y>240</y>
       <width>531</width>
       <height>61</height>
@@ -91,7 +98,7 @@
      <item>
       <widget class="QLabel" name="label_result">
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
