@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/Test/ui_end_win.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test/ui_end_win.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/ui_end_win.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Test/ui_end_win.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/ui_login_win.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Test/ui_login_win.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/ui_test_win.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test/ui_test_win.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/ui_test_win.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Test/ui_test_win.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/view/EView.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test/view/EView.py" afterDir="false" />
     </list>
@@ -105,7 +106,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test/mainwindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
+            <state relative-caret-position="353">
               <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
               <folding>
                 <element signature="e#49#99#0" expanded="true" />
@@ -242,12 +243,12 @@
       <workItem from="1550744833360" duration="5692000" />
       <workItem from="1550839911632" duration="822000" />
       <workItem from="1551077541918" duration="25266000" />
-      <workItem from="1551252560944" duration="9116000" />
+      <workItem from="1551252560944" duration="9505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40896000" />
+    <option name="totallyTimeSpent" value="41285000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -260,14 +261,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.098614074" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32321042" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32321042" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -276,7 +276,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286334" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3286334" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -400,7 +400,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/mainwindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
+        <state relative-caret-position="353">
           <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
           <folding>
             <element signature="e#49#99#0" expanded="true" />
