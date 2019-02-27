@@ -3,9 +3,9 @@ import random
 
 from PyQt5.QtCore import QSizeF, QSize
 
-from view.SvgView import *
+from .SvgView import *
 
-import view.E
+from .E import *
 
 
 def __get_edge_by_alpha(alpha: float):
@@ -28,7 +28,7 @@ class EView(SvgView):
         self.dimension = dimension
         self.distance = distance
         self.direction = EView.RIGHT
-        self.size_code = EView.F_5_0
+        self.size_code = EView.F_5_3
 
         self.openFile(QFile(':/svg/e'))
         self._setSize()

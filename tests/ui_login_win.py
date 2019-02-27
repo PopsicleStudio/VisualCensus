@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.label_logo = QtWidgets.QLabel(self.centralwidget)
         self.label_logo.setGeometry(QtCore.QRect(160, 30, 541, 51))
         self.label_logo.setText("")
-        self.label_logo.setPixmap(QtGui.QPixmap("Test/images/dekang.png"))
+        self.label_logo.setPixmap(QtGui.QPixmap("tests/images/dekang.png"))
         self.label_logo.setScaledContents(True)
         self.label_logo.setObjectName("label_logo")
         self.label_tip = QtWidgets.QLabel(self.centralwidget)
