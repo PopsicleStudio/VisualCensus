@@ -11,16 +11,15 @@ class TaskRemoter(QThread):
     """Read infrared remoter."""
     button_clicked = pyqtSignal(Keys)
 
-    def __int__(self, *args, **kwargs):
-        super(TaskRemoter, self).__init__(*args, **kwargs)
-
-        self._isPause = False
+    def __init__(self, parent=None):
+        super().__init__(parent=None)
+        self._isPause = True
         self._isStop = False
         self.cond = QWaitCondition()
         self.mutex = QMutex()
 
     def pause(self):
-        self._isPause = True
+        pass
 
     def resume(self):
         self._isPause = False
