@@ -1,7 +1,7 @@
 import sys
 from loguru import logger
 
-from visualcensus.const import (
+from const import (
     __version__,
     REQUIRED_PYTHON_VER
 )
@@ -20,6 +20,7 @@ def main():
     """Start Visual Census."""
     validate_python()
     from visualcensus.backend.raspi.tasks import task_remoter
+    task_remoter.start()
 
 
 if __name__ == "__main__":
