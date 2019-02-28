@@ -13,7 +13,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(870, 669)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("images/login_user.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("assets/login_user.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QMainWindow{\n"
 "    background-color: rgb(255, 255, 255);\n"
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.label_logo = QtWidgets.QLabel(self.centralwidget)
         self.label_logo.setGeometry(QtCore.QRect(160, 30, 541, 51))
         self.label_logo.setText("")
-        self.label_logo.setPixmap(QtGui.QPixmap("tests/images/dekang.png"))
+        self.label_logo.setPixmap(QtGui.QPixmap("tests/assets/dekang.png"))
         self.label_logo.setScaledContents(True)
         self.label_logo.setObjectName("label_logo")
         self.label_tip = QtWidgets.QLabel(self.centralwidget)
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(130, 20, 611, 51))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("images/dekang.png"))
+        self.label.setPixmap(QtGui.QPixmap("assets/dekang.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.pushButton_ok = QtWidgets.QPushButton(self.centralwidget)
