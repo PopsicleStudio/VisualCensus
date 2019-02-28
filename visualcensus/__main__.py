@@ -3,6 +3,8 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from loguru import logger
 
+from visualcensus.frontend.mainwindow import MainWindow
+
 from visualcensus.const import (
     __version__,
     REQUIRED_PYTHON_VER
@@ -22,6 +24,7 @@ def main():
     """Start Visual Census."""
     validate_python()
     app = QApplication(sys.argv)
+    w = MainWindow()
     from visualcensus.backend.raspi.tasks import task_remoter
     from visualcensus.backend.raspi.setup import gpio_init
     gpio_init()
