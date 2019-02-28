@@ -23,6 +23,8 @@ def main():
     validate_python()
     app = QApplication(sys.argv)
     from backend.raspi.tasks import task_remoter
+    from visualcensus.backend.raspi.setup import gpio_init
+    gpio_init()
     task_remoter.start()
     return app.exec_()
 
