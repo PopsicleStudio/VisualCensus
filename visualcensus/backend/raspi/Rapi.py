@@ -3,7 +3,7 @@
 from loguru import logger
 import RPi.GPIO as GPIO
 import time
-from .const import Keys
+from .const import Key
 
 PIN = 18
 
@@ -15,39 +15,39 @@ def setup():
 
 
 def exec_cmd(key_val):
-    if key_val == Keys.KEY_1:
+    if key_val == Key.KEY_1:
         print("Button KEY_1")
-    elif key_val == Keys.KEY_2:
+    elif key_val == Key.KEY_2:
         print("Button KEY_2")
-    elif key_val == Keys.KEY_3:
+    elif key_val == Key.KEY_3:
         print("Button KEY_3")
-    elif key_val == Keys.KEY_4:
+    elif key_val == Key.KEY_4:
         print("Button KEY_4")
-    elif key_val == Keys.KEY_5:
+    elif key_val == Key.KEY_5:
         print("Button KEY_5")
-    elif key_val == Keys.KEY_6:
+    elif key_val == Key.KEY_6:
         print("Button KEY_6")
-    elif key_val == Keys.KEY_7:
+    elif key_val == Key.KEY_7:
         print("Button KEY_7")
-    elif key_val == Keys.KEY_8:
+    elif key_val == Key.KEY_8:
         print("Button KEY_8")
-    elif key_val == Keys.KEY_9:
+    elif key_val == Key.KEY_9:
         print("Button KEY_9")
-    elif key_val == Keys.KEY_0:
+    elif key_val == Key.KEY_0:
         print("Button 0")
-    elif key_val == Keys.KEY_STAR:
+    elif key_val == Key.KEY_STAR:
         print("Button KEY_STAR")
-    elif key_val == Keys.KEY_POUND:
+    elif key_val == Key.KEY_POUND:
         print("Button KEY_POUND")
-    elif key_val == Keys.KEY_UP:
+    elif key_val == Key.KEY_UP:
         print("Button KEY_UP")
-    elif key_val == Keys.KEY_LEFT:
+    elif key_val == Key.KEY_LEFT:
         print("Button KEY_LEFT")
-    elif key_val == Keys.KEY_OK:
+    elif key_val == Key.KEY_OK:
         print("Button KEY_OK")
-    elif key_val == Keys.KEY_RIGHT:
+    elif key_val == Key.KEY_RIGHT:
         print("Button KEY_RIGHT")
-    elif key_val == Keys.KEY_DOWN:
+    elif key_val == Key.KEY_DOWN:
         print("Button KEY_DOWN")
 
 

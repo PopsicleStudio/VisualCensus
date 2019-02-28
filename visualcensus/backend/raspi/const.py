@@ -5,7 +5,7 @@ PIN_IR_REMOTE_CONTROL = 18
 
 
 @unique
-class Keys(Enum):
+class Key(Enum):
     """There is keyValue"""
     KEY_UNKNOWN =   0x00
     KEY_1       =   0x45

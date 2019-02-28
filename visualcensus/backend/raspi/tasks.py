@@ -9,7 +9,7 @@ from .const import *
 
 class TaskRemoter(QThread):
     """Read infrared remoter."""
-    button_clicked = pyqtSignal(Keys)
+    button_clicked = pyqtSignal(Key)
 
     def __init__(self, parent=None):
         super().__init__(parent=None)
@@ -73,8 +73,9 @@ class TaskRemoter(QThread):
                     else:
                         cnt += 1
                 if data[0] + data[1] == 0xFF and data[2] + data[3] == 0xFF:
-                    logger.debug('Get the key: 0x%02x' % data[2])
-                    self.button_clicked.emit(Keys(data[2]))
+                    k = Key(data[2])
+                    logger.debug('Get the key: {}'.format(k))
+                    self.button_clicked.emit(k)
             self.mutex.unlock()
 
 
