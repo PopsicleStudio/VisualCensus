@@ -13,13 +13,13 @@ class TaskRemoter(QThread):
 
     def __init__(self, parent=None):
         super().__init__(parent=None)
-        self._isPause = True
+        self._isPause = False
         self._isStop = False
         self.cond = QWaitCondition()
         self.mutex = QMutex()
 
     def pause(self):
-        pass
+        self._isPause = True
 
     def resume(self):
         self._isPause = False
