@@ -1,4 +1,6 @@
 import sys
+
+from PyQt5.QtWidgets import QApplication
 from loguru import logger
 
 from const import (
@@ -19,8 +21,10 @@ def validate_python() -> None:
 def main():
     """Start Visual Census."""
     validate_python()
-    from visualcensus.backend.raspi.tasks import task_remoter
+    app = QApplication(sys.argv)
+    from backend.raspi.tasks import task_remoter
     task_remoter.start()
+    return app.exec_()
 
 
 if __name__ == "__main__":
