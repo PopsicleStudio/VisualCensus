@@ -6,6 +6,7 @@ from loguru import logger
 from visualcensus.const import (
     REQUIRED_PYTHON_VER
 )
+from visualcensus.frontend.loginwindow import LoginWindow
 
 
 def validate_python() -> None:
@@ -21,6 +22,8 @@ def main():
     """Start Visual Census."""
     validate_python()
     app = QApplication(sys.argv)
+    w = LoginWindow()
+    w.show()
     from visualcensus.backend.raspi.tasks import task_remoter
     from visualcensus.backend.raspi.setup import gpio_init
     gpio_init()
