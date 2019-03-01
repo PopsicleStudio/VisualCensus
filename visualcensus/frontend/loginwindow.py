@@ -22,7 +22,7 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
         from visualcensus.backend.raspi.tasks import task_remoter
         task_remoter.signal_button_clicked.connect(self.onRemoterPressed)
 
-    def onRemoterKeyPressed(self, key: Key):
+    def onRemoterPressed(self, key: Key):
         if key in (Key.KEY_0, Key.KEY_1, Key.KEY_2, Key.KEY_3,
                    Key.KEY_4, Key.KEY_5, Key.KEY_6, Key.KEY_7,
                    Key.KEY_7, Key.KEY_8, Key.KEY_9):
