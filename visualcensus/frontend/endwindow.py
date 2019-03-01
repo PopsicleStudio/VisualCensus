@@ -24,6 +24,8 @@ class EndWindow(BaseWindow, Ui_MainWindow):
     def initial(self):
         self.label_result.setText(str(self.vision_test_value))
         # self.label_result.adjustSize()
+        from visualcensus.backend.raspi.tasks import task_remoter
+        task_remoter.signal_button_clicked.connect(self.onRemoterPressed)
 
     def keyPressEvent(self, event):
         # 按数字零返回登录界面

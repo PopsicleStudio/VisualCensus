@@ -6,6 +6,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPalette
 
+from visualcensus.backend.raspi.const import Key
 from visualcensus.frontend.BaseWindow import BaseWindow
 from .ui_test_win import Ui_MainWindow
 from .views.EView import EView
@@ -34,6 +35,8 @@ class TestWindow(BaseWindow, Ui_MainWindow):
 
     def init_view(self):
         # self.showFullScreen()
+        from visualcensus.backend.raspi.tasks import task_remoter
+        task_remoter.signal_button_clicked.connect(self.onRemoterPressed)
 
         # 背景设成白色
         pal = QPalette(self.palette())
@@ -85,6 +88,17 @@ class TestWindow(BaseWindow, Ui_MainWindow):
         #     size -= 1
         #
         #     self.e_view.setSizeCode(size)
+
+    def onRemoterPressed(self, key: Key):
+        if key == Key.KEY_UP:
+            self.user_input_direction = EView.UP
+        if key == Key.KEY_DOWN:
+            self.user_input_direction = EView.DOWN
+        if key == Key.KEY_LEFT:
+            self.user_input_direction = EView.LEFT
+        if key == Key.KEY_RIGHT:
+            self.user_input_direction = EView.RIGHT
+        self.keyhandle()
 
     # 键盘的处理函数
     def keyhandle(self):
