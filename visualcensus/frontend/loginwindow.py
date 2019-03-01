@@ -32,4 +32,4 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
             from visualcensus.frontend.testwindow import TestWindow
             nextWindow = TestWindow()
             nextWindow.show()
-            self.close()
+            self.hide()
