@@ -27,7 +27,7 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
                    Key.KEY_4, Key.KEY_5, Key.KEY_6, Key.KEY_7,
                    Key.KEY_7, Key.KEY_8, Key.KEY_9):
             s = self.lineEdit_userName.text()
-            self.lineEdit_userName.setText(s + str(key.value))
+            self.lineEdit_userName.setText(s + str(key))
         elif key == Key.KEY_OK:
             from visualcensus.frontend.testwindow import TestWindow
             nextWindow = TestWindow()
