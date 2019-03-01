@@ -17,7 +17,7 @@ class BaseWindow(QMainWindow):
     def __init__(self, flags, *args, **kwargs):
         super().__init__(flags, *args, **kwargs)
         from visualcensus.backend.raspi.tasks import task_remoter
-        task_remoter.button_clicked.connect(self.onRemoterPressed)
+        task_remoter.signal_button_clicked.connect(self.onRemoterPressed)
 
     def sendMessage(self, windowFrom, msg):
         self.signal_send_msg.emit(self, msg)
