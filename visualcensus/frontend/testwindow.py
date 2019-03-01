@@ -5,14 +5,14 @@
 """
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPalette
-from PyQt5.QtWidgets import QMainWindow
 
+from visualcensus.frontend.BaseWindow import BaseWindow
 from .ui_test_win import Ui_MainWindow
 from .views.EView import EView
 from .views.SvgView import *
 
 
-class TestWindow(QMainWindow, Ui_MainWindow):
+class TestWindow(BaseWindow, Ui_MainWindow):
     test_end_event = pyqtSignal()
 
     def __init__(self, parent=None):
@@ -46,8 +46,6 @@ class TestWindow(QMainWindow, Ui_MainWindow):
         # 设置响应事件
         self.e_view.clicked_event.connect(self.onEViewClicked)
         self.e_view.wheel_event.connect(self.onWheelEvent)
-
-        self.show()
 
     # 鼠标点击事件
     def onEViewClicked(self, event: QMouseEvent):
@@ -103,6 +101,10 @@ class TestWindow(QMainWindow, Ui_MainWindow):
                 self.vision_value = EView.FIVE_MAP[size]
                 # self.test_end_flag = 1
                 self.test_end_event.emit()
+                from visualcensus.frontend.endwindow import EndWindow
+                nextWindow = EndWindow(self.vision_value)
+                nextWindow.show()
+                self.close()
 
         else:
             self.judge_wrong_nums += 1

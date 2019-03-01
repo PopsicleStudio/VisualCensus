@@ -2,9 +2,10 @@ import sys
 
 from PyQt5.QtWidgets import QApplication
 
-from visualcensus.frontend.mainwindow import MainWindow
+from visualcensus.frontend.loginwindow import LoginWindow
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    w = MainWindow()
-    sys.exit(app.exec_())
+    w = LoginWindow()
+    w.show()
+    sys.exit(app.exec())
