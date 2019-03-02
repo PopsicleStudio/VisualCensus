@@ -36,10 +36,12 @@ class EndWindow(BaseWindow, Ui_MainWindow):
     def keyPressEvent(self, event):
         # 按数字零返回登录界面
         if event.key() == Qt.Key_0:
-            self.return_login_event.emit()
+            self.__gotoLoginWindow()
 
     def onRemoterPressed(self, key: Key):
+        self.__gotoLoginWindow()
+
+    def __gotoLoginWindow(self):
         from visualcensus.frontend.loginwindow import LoginWindow
-        nextWindow = LoginWindow()
-        nextWindow.show()
-        self.close()
+        self.startWindow(LoginWindow)
+        self.hide()
