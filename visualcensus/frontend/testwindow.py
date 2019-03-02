@@ -116,9 +116,9 @@ class TestWindow(BaseWindow, Ui_MainWindow):
                 # self.test_end_flag = 1
                 self.test_end_event.emit()
                 from visualcensus.frontend.endwindow import EndWindow
-                nextWindow = EndWindow(self.vision_value)
-                nextWindow.show()
-                self.close()
+                self.startWindow(EndWindow)
+                self.sendMessage(EndWindow, self.vision_value)
+                self.hide()
 
         else:
             self.judge_wrong_nums += 1

@@ -3,9 +3,12 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from loguru import logger
 
+from visualcensus.backend.raspi import setup
+from visualcensus.backend.raspi.tasks import task_remoter
 from visualcensus.const import (
     REQUIRED_PYTHON_VER
 )
+from visualcensus.frontend.launcher import Launcher
 from visualcensus.frontend.loginwindow import LoginWindow
 
 
@@ -22,11 +25,9 @@ def main():
     """Start Visual Census."""
     validate_python()
     app = QApplication(sys.argv)
-    w = LoginWindow()
-    w.show()
-    from visualcensus.backend.raspi.tasks import task_remoter
-    from visualcensus.backend.raspi.setup import gpio_init
-    gpio_init()
+    launcher = Launcher()
+    launcher.startWindow(LoginWindow)
+    setup.gpio_init()
     task_remoter.start()
     return app.exec_()
 

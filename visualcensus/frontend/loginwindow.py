@@ -19,8 +19,7 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
     def initial(self):
         # 当用户鼠标焦点在输入框且输入信息时，提示信息消失
         self.lineEdit_userName.setPlaceholderText("请输入用户名")
-        from visualcensus.backend.raspi.tasks import task_remoter
-        task_remoter.signal_button_clicked.connect(self.onRemoterPressed)
+        self.pushButton_ok.clicked.connect(self.onButtonOkClicked)
 
     def onRemoterPressed(self, key: Key):
         if key in (Key.KEY_0, Key.KEY_1, Key.KEY_2, Key.KEY_3,
@@ -30,6 +29,10 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
             self.lineEdit_userName.setText(s + str(key))
         elif key == Key.KEY_OK:
             from visualcensus.frontend.testwindow import TestWindow
-            nextWindow = TestWindow()
-            nextWindow.show()
+            self.parent().startWindow(TestWindow)
             self.hide()
+
+    def onButtonOkClicked(self):
+        from visualcensus.frontend.testwindow import TestWindow
+        self.startWindow(TestWindow)
+        self.hide()
