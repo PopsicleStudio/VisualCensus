@@ -12,7 +12,7 @@ from visualcensus.frontend.launcher import Launcher
 from visualcensus.frontend.loginwindow import LoginWindow
 
 
-def validate_python() -> None:
+def validate_python():
     """Validate that the right Python version is running."""
     if sys.version_info[:3] < REQUIRED_PYTHON_VER:
         logger.debug("Visual Census requires at least Python {}.{}.{}".format(
