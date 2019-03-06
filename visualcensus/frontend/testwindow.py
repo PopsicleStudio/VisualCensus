@@ -116,7 +116,6 @@ class TestWindow(BaseWindow, Ui_MainWindow):
                 from visualcensus.frontend.endwindow import EndWindow
                 self.startWindow(EndWindow)
                 self.sendMessage(EndWindow, self.vision_value)
-                self.hide()
 
 
         else:

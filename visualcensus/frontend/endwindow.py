@@ -44,4 +44,3 @@ class EndWindow(BaseWindow, Ui_MainWindow):
     def __gotoLoginWindow(self):
         from visualcensus.frontend.loginwindow import LoginWindow
         self.startWindow(LoginWindow)
-        self.hide()

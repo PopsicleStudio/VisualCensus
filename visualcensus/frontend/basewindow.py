@@ -16,6 +16,7 @@ class BaseWindow(QMainWindow):
         super().__init__(parent)
 
     def startWindow(self, windowType: type):
+        self.hide()
         self.signal_start_window.emit(windowType)
 
     def sendMessage(self, window_to: type, msg: object):
@@ -30,13 +31,13 @@ class BaseWindow(QMainWindow):
     def showEvent(self, event):
         from visualcensus.backend.raspi.tasks import task_remoter
         task_remoter.signal_button_clicked.connect(self.onRemoterPressed)
-        print(str(self)+' show')
+        print(str(self) + ' show')
         super(BaseWindow, self).showEvent(event)
 
     def hideEvent(self, event):
         from visualcensus.backend.raspi.tasks import task_remoter
-        task_remoter.signal_button_clicked.disconnect(self.onRemoterPressed)
-        print(str(self)+' hide')
+        task_remoter.signal_button_clicked.disconnect()
+        print(str(self) + ' hide')
         super(BaseWindow, self).hideEvent(event)
 
     def onRemoterPressed(self, key):

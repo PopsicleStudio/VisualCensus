@@ -40,7 +40,6 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
     def onButtonOkClicked(self):
         from visualcensus.frontend.testwindow import TestWindow
         self.startWindow(TestWindow)
-        self.hide()
 
     def clearUsername(self):
         self.lineEdit_userName.clear()
