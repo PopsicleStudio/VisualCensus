@@ -16,6 +16,8 @@ from .views.SvgView import *
 class TestWindow(BaseWindow, Ui_MainWindow):
     test_end_event = pyqtSignal()
 
+    OTHER_KEY = 404
+
     def __init__(self, parent=None):
         super(TestWindow, self).__init__(parent)
 
@@ -68,25 +70,34 @@ class TestWindow(BaseWindow, Ui_MainWindow):
         # 不区分大小写 按键事件对大小写不敏感
         if event.key() == Qt.Key_W:
             self.user_input_direction = EView.UP
-        if event.key() == Qt.Key_A:
+        elif event.key() == Qt.Key_A:
             self.user_input_direction = EView.LEFT
-        if event.key() == Qt.Key_S:
+        elif event.key() == Qt.Key_S:
             self.user_input_direction = EView.DOWN
-        if event.key() == Qt.Key_D:
+        elif event.key() == Qt.Key_D:
             self.user_input_direction = EView.RIGHT
+        else:
+            # 在测试进行时不被其他无关按键干扰
+            self.user_input_direction = TestWindow.OTHER_KEY
 
-        self.keyhandle()
+        if self.user_input_direction != TestWindow.OTHER_KEY:
+            self.keyhandle()
 
     def onRemoterPressed(self, key: Key):
         if key == Key.KEY_UP:
             self.user_input_direction = EView.UP
-        if key == Key.KEY_DOWN:
+        elif key == Key.KEY_DOWN:
             self.user_input_direction = EView.DOWN
-        if key == Key.KEY_LEFT:
+        elif key == Key.KEY_LEFT:
             self.user_input_direction = EView.LEFT
-        if key == Key.KEY_RIGHT:
+        elif key == Key.KEY_RIGHT:
             self.user_input_direction = EView.RIGHT
-        self.keyhandle()
+        else:
+            # 在测试进行时不被其他无关按键干扰
+            self.user_input_direction = TestWindow.OTHER_KEY
+
+        if self.user_input_direction != TestWindow.OTHER_KEY:
+            self.keyhandle()
 
     # 键盘的处理函数
     def keyhandle(self):
