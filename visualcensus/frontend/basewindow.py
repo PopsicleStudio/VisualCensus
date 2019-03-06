@@ -27,11 +27,15 @@ class BaseWindow(QMainWindow):
     def closeEvent(self, *args, **kwargs):
         self.signal_closed.emit(self)
 
-    def showEvent(self):
+    def showEvent(self, event):
         from visualcensus.backend.raspi.tasks import task_remoter
         task_remoter.signal_button_clicked.connect(self.onRemoterPressed)
+        super(BaseWindow, self).showEvent(event)
 
-    def hideEvent(self):
+    def hideEvent(self, event):
+        from visualcensus.backend.raspi.tasks import task_remoter
+        task_remoter.signal_button_clicked.disconnect(self.onRemoterPressed)
+        super(BaseWindow, self).hideEvent(event)
 
-
-
+    def onRemoterPressed(self, key):
+        pass

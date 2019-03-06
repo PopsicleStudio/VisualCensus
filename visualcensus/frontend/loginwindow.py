@@ -5,7 +5,7 @@
 from loguru import logger
 
 from visualcensus.backend.raspi.const import Key
-from visualcensus.frontend.BaseWindow import BaseWindow
+from visualcensus.frontend.basewindow import BaseWindow
 from .ui_login_win import Ui_MainWindow
 
 
@@ -32,6 +32,9 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
             from visualcensus.frontend.testwindow import TestWindow
             self.startWindow(TestWindow)
             self.hide()
+        elif key == Key.KEY_POUND:
+            s = self.lineEdit_userName.text()
+            self.lineEdit_userName.setText(s[:-1])
 
     # 按下登录界面上的OK_button时的关联事件
     def onButtonOkClicked(self):
@@ -50,4 +53,3 @@ class LoginWindow(BaseWindow, Ui_MainWindow):
         """
         self.clearUsername()
         super(LoginWindow, self).showEvent(event)
-

@@ -7,7 +7,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import QPalette
 
 from visualcensus.backend.raspi.const import Key
-from visualcensus.frontend.BaseWindow import BaseWindow
+from visualcensus.frontend.basewindow import BaseWindow
 from .ui_test_win import Ui_MainWindow
 from .views.EView import EView
 from .views.SvgView import *

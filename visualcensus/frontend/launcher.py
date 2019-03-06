@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 
-from visualcensus.frontend.BaseWindow import BaseWindow
+from visualcensus.frontend.basewindow import BaseWindow
 
 
 class Launcher(QWidget):

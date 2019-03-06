@@ -5,7 +5,7 @@
 from PyQt5.QtCore import pyqtSignal, Qt
 
 from visualcensus.backend.raspi.const import Key
-from visualcensus.frontend.BaseWindow import BaseWindow
+from visualcensus.frontend.basewindow import BaseWindow
 from visualcensus.frontend.testwindow import TestWindow
 from .ui_end_win import Ui_MainWindow
 
