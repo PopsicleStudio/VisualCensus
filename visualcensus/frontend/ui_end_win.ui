@@ -23,7 +23,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>images/wind-smile.png</normaloff>images/wind-smile.png</iconset>
+    <normaloff>../assets/wind-smile.png</normaloff>../assets/wind-smile.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_end">
@@ -60,22 +60,6 @@
     </property>
     <property name="text">
      <string>请按任意键退出</string>
-    </property>
-   </widget>
-   <widget class="QFrame" name="frame">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>270</y>
-      <width>120</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
     </property>
    </widget>
    <widget class="QWidget" name="widget" native="true">
