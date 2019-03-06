@@ -24,7 +24,6 @@ class TestWindow(BaseWindow, Ui_MainWindow):
         self.judge_wrong_nums = 0
         self.user_input_direction = 0
         self.vision_value = 0
-        self.test_end_flag = 0
 
         self.e_view = EView(QSize(1920, 1080), QSizeF(531.5, 299.0), 5000)
         # 必须在view实例化以后访问，否则程序会崩溃
@@ -77,17 +76,6 @@ class TestWindow(BaseWindow, Ui_MainWindow):
             self.user_input_direction = EView.RIGHT
 
         self.keyhandle()
-        # if event.key() == Qt.Key_B:
-        #     # 0 代表E字很小， 17 代表E字很大
-        #     size = self.e_view.size_code
-        #     size += 1
-        #
-        #     self.e_view.setSizeCode(size)
-        # if event.key() == Qt.Key_M:
-        #     size = self.e_view.size_code
-        #     size -= 1
-        #
-        #     self.e_view.setSizeCode(size)
 
     def onRemoterPressed(self, key: Key):
         if key == Key.KEY_UP:
@@ -113,12 +101,12 @@ class TestWindow(BaseWindow, Ui_MainWindow):
             if self.judge_correct_nums > 3:
                 size = self.e_view.size_code
                 self.vision_value = EView.FIVE_MAP[size]
-                # self.test_end_flag = 1
                 self.test_end_event.emit()
                 from visualcensus.frontend.endwindow import EndWindow
                 self.startWindow(EndWindow)
                 self.sendMessage(EndWindow, self.vision_value)
                 self.hide()
+
 
         else:
             self.judge_wrong_nums += 1
@@ -136,3 +124,25 @@ class TestWindow(BaseWindow, Ui_MainWindow):
             #     size = self.e_view.size_code
             #     size += 1
             #     self.e_view.setSizeCode(size)
+
+    # 当重新进入这个界面时，清除数据
+    def clearData(self):
+        self.judge_correct_nums = 0
+        self.judge_wrong_nums = 0
+        self.user_input_direction = 0
+        self.vision_value = 0
+        self.e_view.size_code = EView.F_5_3
+        # 尺寸与视力直接相关，越大视力越低
+        size = EView.F_5_3
+        self.e_view.setSizeCode(size)
+        print(size)
+
+    def showEvent(self, event):
+        """
+        调用show函数就会触发本函数
+        :param event:
+        :return: None
+        """
+        # 清除上一次测试的数据
+        self.clearData()
+        super(TestWindow, self).showEvent(event)

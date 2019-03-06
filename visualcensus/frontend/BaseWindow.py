@@ -28,3 +28,4 @@ class BaseWindow(QMainWindow):
 
     def closeEvent(self, *args, **kwargs):
         self.signal_closed.emit(self)
+
